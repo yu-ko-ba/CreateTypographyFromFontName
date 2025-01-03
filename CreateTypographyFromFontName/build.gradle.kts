@@ -1,7 +1,12 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+
+    `maven-publish`
 }
+
+apply(plugin = "com.android.library")
+apply(plugin = "maven-publish")
 
 android {
     namespace = "io.github.yukoba.createtypographyfromfontname"
@@ -12,6 +17,10 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        aarMetadata {
+            minCompileSdk = 21
+        }
     }
 
     buildTypes {
@@ -30,6 +39,12 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
 }
 
 dependencies {
@@ -42,4 +57,17 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.yu-ko-ba"
+                artifactId = "CreateTypographyFromFontName"
+                version = "0.0.1"
+            }
+        }
+    }
 }
