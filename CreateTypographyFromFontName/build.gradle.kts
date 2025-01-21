@@ -66,7 +66,18 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.yu-ko-ba"
                 artifactId = "CreateTypographyFromFontName"
-                version = "0.0.2"
+                version = "0.0.3"
+                pom {
+                    name = "CreateTypographyFromFontName"
+                    url = "https://github.com/yu-ko-ba/CreateTypographyFromFontName"
+                    licenses {
+                        license {
+                            name = "MIT"
+                            url =
+                                "https://github.com/yu-ko-ba/CreateTypographyFromFontName/blob/main/LICENSE"
+                        }
+                    }
+                }
             }
         }
     }
