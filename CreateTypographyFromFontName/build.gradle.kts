@@ -66,7 +66,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.yu-ko-ba"
                 artifactId = "CreateTypographyFromFontName"
-                version = "0.0.3"
+                version = "0.0.4"
                 pom {
                     name = "CreateTypographyFromFontName"
                     licenses {
